@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#102d59">
+<meta name="description" content="Practical, publicly shareable staff professional learning guides with worked examples and interactive tasks.">
+<title>CPD Guide | KNGS</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+.guide-meta{display:flex;gap:9px;flex-wrap:wrap;margin-top:12px}.guide-meta span{font-size:.78rem;border:1px solid #c9ddeb;background:#f1f6fc;border-radius:99px;padding:5px 11px;color:#225b88;font-weight:750}
+.guide-layout{display:grid;grid-template-columns:minmax(0,1fr) 234px;gap:22px;align-items:start}.side{position:sticky;top:20px}.side a{display:block;margin:8px 0;text-decoration:none;font-size:.85rem;color:#245b89}.side a:hover{text-decoration:underline}
+.guide-lead{font-size:1.04rem;line-height:1.74}.guide-step{display:flex;gap:14px;margin:20px 0}.step-index{display:grid;place-items:center;flex:none;width:34px;height:34px;border-radius:9px;background:#e6f0fb;color:#205d9d;font-weight:900}.guide-step h3{margin:2px 0 5px;font-size:1.08rem}.guide-step p{margin:0;color:#475d72}
+.contrast-cards{display:grid;grid-template-columns:1fr 1fr;gap:12px}.contrast-cards>div{border:1px solid #dbe4ed;border-radius:12px;padding:17px;background:#f8fbff}.contrast-cards .bad{background:#fff5f2;border-color:#efc9bd}.contrast-cards .good{background:#edf9f4;border-color:#bedfcb}.contrast-cards h3{margin-bottom:7px;font-size:.96rem}.contrast-cards p{white-space:pre-line}
+.activity-box{background:#f5f9ff;border:1px solid #caddee;border-radius:14px;padding:19px}.activity-box textarea,.activity-box input,.activity-box select{border:1px solid #a9bdcf;border-radius:9px;padding:12px;font:inherit;background:white;color:#1b3046}.activity-box textarea{width:100%;min-height:150px;resize:vertical;margin:10px 0}.activity-box input,.activity-box select{width:100%}.activity-box label{display:block;margin:12px 0 5px;font-weight:750;font-size:.84rem}
+.activity-box .actions{margin-top:12px}.activity-box #copy-note{color:#275e72;font-size:.8rem;margin-top:8px;min-height:1em}.preview{background:white;padding:15px;white-space:pre-wrap;overflow-wrap:anywhere;border:1px solid #cdddea;border-radius:9px;margin-top:13px}.model{margin-top:14px}.model summary{cursor:pointer;font-weight:800}
+.checked{display:grid;gap:8px}.checked label{display:flex;align-items:flex-start;gap:9px;padding:11px;border-radius:9px;background:#f7faff;border:1px solid #e0eaf3;font-size:.89rem}.checked input{margin-top:5px;accent-color:#206b9b}
+.source-list{display:grid;gap:10px}.source-list .source{padding:14px;border:1px solid #dae6f3;background:#f8fbff;border-radius:10px}.source small{display:block;color:#536a83;margin-top:5px}.source a{font-weight:800}
+.tool-target{margin-top:13px}.tool-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}.tool-grid>div{min-width:0}
+.disclaimer{border-left:4px solid #dfad4b;padding:12px 16px;background:#fff9ec;border-radius:0 8px 8px 0;font-size:.88rem}
+.smallcopy{font-size:.82rem;color:#556b81}
+@media(max-width:850px){.guide-layout{grid-template-columns:1fr}.side{position:static;order:-1}.side a{display:inline-block;margin:5px 12px 5px 0}}@media(max-width:600px){.contrast-cards,.tool-grid{grid-template-columns:1fr}.activity-box{padding:14px}}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+ <nav class="topbar"><span class="brand">Kings Norton Girls' School · Professional Learning</span><a href="index.html" class="toplink">← CPD guide library</a></nav>
+ <div class="hero"><p class="eyebrow">Practical CPD · Online guide</p><h1 id="hero-title">Loading guide…</h1><p id="hero-subtitle"></p><div class="hero-tags"><span>Public resource</span><span>Fictional examples</span><span>No sign-in</span></div></div>
+</div></header>
+<main class="wrap" id="page" aria-live="polite"></main>
+<footer class="footer"><div class="wrap">KNGS CPD Hub · Guidance is illustrative, not an internal procedure · Always follow current local policies.</div></footer>
+<script src="guides-data-teaching.js"></script>
+<script src="guides-data-digital.js"></script>
+<script>
+(function(){
+'use strict';
+const id=new URLSearchParams(location.search).get('id');
+const data=CPD_MORE_GUIDES.find(x=>x.id===id);
+const page=document.getElementById('page'),heading=document.getElementById('hero-title'),subheading=document.getElementById('hero-subtitle');
+const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const safeURL=v=>{try{let u=new URL(v);return u.protocol==='https:'?esc(u.href):'#'}catch(e){return '#'}};
+if(!data){
+ heading.textContent='Guide not found';subheading.textContent='Please return to the CPD guide library.';
+ page.innerHTML='<section class="panel"><h2>This guide is not available</h2><a class="btn" href="index.html">Back to the guide library</a></section>';return;
+}
+document.title=data.title+' | KNGS CPD Hub';
+heading.textContent=data.title;
+subheading.textContent=data.subtitle;
+const g=data;
+const guideLinks=CPD_MORE_GUIDES.filter(x=>x.id!==g.id&&(x.category===g.category||x.id==='ai-safety')).slice(0,3);
+const toc=['Overview','Steps','Worked example','Try it','Before you use it','Further reading'];
+page.innerHTML='<div class="guide-layout"><div>'
+ +'<section class="panel" id="overview"><div class="kicker">'+esc(g.category)+' · '+esc(g.level)+'</div><h2>'+esc(g.icon)+' '+esc(g.title)+'</h2><div class="guide-meta"><span>Guide + activity: '+esc(g.minutes)+' minutes</span><span>Last reviewed: '+esc(g.updated)+'</span></div><p class="guide-lead" style="margin-top:20px">'+esc(g.intro)+'</p><div class="callout"><strong>By the end, you should be able to:</strong> '+esc(g.outcome)+'</div><div class="disclaimer"><strong>Public demonstration:</strong> This guide uses fictional situations and is not a source of confidential school instructions. Do not enter pupil or staff records, passwords, addresses, safeguarding details or private links in the activities. Tool options and approval vary by organisation.</div></section>'
+ +'<section class="panel" id="steps"><div class="kicker">Follow the process</div><h2>How to do it</h2>'
+ +g.steps.map((x,i)=>'<div class="guide-step"><span class="step-index">'+(i+1)+'</span><div><h3>'+esc(x[0])+'</h3><p>'+esc(x[1])+'</p></div></div>').join('')+'</section>'
+ +'<section class="panel" id="example"><div class="kicker">A realistic fictional example</div><h2>'+esc(g.example.title)+'</h2><div class="contrast-cards"><div class="bad"><h3>Less useful</h3><p>'+esc(g.example.weak)+'</p></div><div class="good"><h3>Better approach</h3><p>'+esc(g.example.improved)+'</p></div></div><p class="muted small" style="margin:17px 0 0"><strong>Why this is better:</strong> '+esc(g.example.why)+'</p></section>'
+ +'<section class="panel" id="practice"><div class="kicker">Try it for yourself</div><h2>'+esc(g.practice.heading)+'</h2><p>'+esc(g.practice.task)+'</p><div class="activity-box"><label for="notes">Your response (fictional examples only)</label><textarea id="notes" spellcheck="true" placeholder="'+esc(g.practice.starter)+'" maxlength="10000"></textarea><div class="actions"><button class="btn" id="copy-notes">Copy my response</button><button class="btn secondary" id="use-starter">Show a writing frame</button><button class="btn secondary" id="clear-notes">Clear</button></div><p id="copy-note" role="status"></p><details class="model"><summary>See an example response</summary><p>'+esc(g.practice.model)+'</p></details></div><div id="interact" class="tool-target"></div></section>'
+ +'<section class="panel" id="checklist"><div class="kicker">Final checks</div><h2>Before you use it</h2><p>These are checks for your own planning, not a completion or monitoring system.</p><div class="checked">'+g.checklist.map((x,i)=>'<label><input type="checkbox" id="check'+i+'"> <span>'+esc(x)+'</span></label>').join('')+'</div><p class="smallcopy">Checkboxes reset when you leave the page. Nothing is collected or reported.</p></section>'
+ +'<section class="panel" id="sources"><div class="kicker">Further reading</div><h2>Specific guidance pages</h2><p class="muted">The sources below support the guidance and may change over time. Check the published guidance and your organisation’s current policies before applying it.</p><div class="source-list">'+g.resources.map(x=>'<div class="source"><a href="'+safeURL(x[1])+'" target="_blank" rel="noopener noreferrer">'+esc(x[0])+' ↗</a><small>'+esc(x[2])+'</small></div>').join('')+'</div></section>'
+ +'<section class="panel"><h2>Related guides</h2><div class="grid-two">'+guideLinks.map(x=>'<div class="mini-card"><strong>'+esc(x.icon+' '+x.title)+'</strong><p class="muted small">'+esc(x.description)+'</p><a href="guide.html?id='+encodeURIComponent(x.id)+'">Read this guide →</a></div>').join('')+'</div><div class="actions" style="margin-top:16px"><a class="btn secondary" href="index.html">Back to all CPD guides</a></div></section>'
+ +'</div><aside class="panel side"><div class="kicker">In this guide</div>'+toc.map((x,i)=>'<a href="#'+['overview','steps','example','practice','checklist','sources'][i]+'">'+esc(x)+'</a>').join('')+'<hr class="hr"><p class="micro muted">All text you type stays in this browser page. It is not sent to the school, stored or submitted.</p></aside></div>';
+function bind(id,cb){const e=document.getElementById(id);if(e)e.addEventListener('click',cb)}
+function announce(t){const el=document.getElementById('copy-note');el.textContent=t}
+function clipboard(t){if(!t.trim()){announce('There is no text to copy.');return}if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(t).then(()=>announce('Copied to your clipboard.'),()=>announce('Please select and copy your response manually.'))}else{announce('Please select and copy your response manually.')}}
+bind('copy-notes',()=>clipboard(document.getElementById('notes').value));
+bind('use-starter',()=>{const a=document.getElementById('notes');if(!a.value.trim())a.value=g.practice.starter;a.focus()});
+bind('clear-notes',()=>{document.getElementById('notes').value='';announce('Cleared. No information was saved.')});
+const panel=document.getElementById('interact');
+function box(title,body){panel.innerHTML='<div class="activity-box"><h3>'+esc(title)+'</h3>'+body+'</div>'}
+if(g.tool==='privacy'){
+ const cases=[
+ ['A fictional worksheet for an invented Year 8 class','Lower risk: general classroom planning with no personal data. Still check approval and accuracy.','safe'],
+ ['Named marks and support details from an actual pupil','Not appropriate for an unapproved tool: identifiable educational and potentially sensitive information.','unsafe'],
+ ['A generic worked example of fraction calculations','Lower risk when fictional and subject-correct. Check the output and keep control of teaching.','safe'],
+ ['A confidential internal staff report with names replaced by initials','Not automatically anonymous. Initials and context can still identify people.','unsafe'],
+ ['An internal password or guest account code','Never enter credentials into an unapproved AI service.','unsafe']
+ ];
+ box('AI privacy decision practice','<p>Choose one fictional situation. Decide whether it is appropriate for a general, unapproved AI service, then check the explanation.</p><label for="case">Situation</label><select id="case">'+cases.map((x,i)=>'<option value="'+i+'">'+esc(x[0])+'</option>').join('')+'</select><div class="actions"><button class="btn" id="judge-safe">Lower-risk example</button><button class="btn secondary" id="judge-risk">Do not paste</button></div><div id="decision" class="preview" role="status">Choose your judgement to see feedback.</div>');
+ function assess(v){const x=cases[+document.getElementById('case').value];document.getElementById('decision').textContent=(v===x[2]?'✓ Matches the recommended judgement. ':'Consider the information risk again. ')+x[1]}
+ bind('judge-safe',()=>assess('safe'));bind('judge-risk',()=>assess('unsafe'));
+}
+if(g.tool==='mcq'){
+ box('Diagnostic question builder','<p>Draft a four-option question. This builder does not automatically verify the answer or quality of distractors. Review it yourself.</p><div class="tool-grid">'+[['qobjective','Learning objective'],['qstem','Question'],['correct','Correct answer'],['wrong1','Misconception 1'],['wrong2','Misconception 2'],['wrong3','Misconception 3']].map(x=>'<div><label for="'+x[0]+'">'+x[1]+'</label><input id="'+x[0]+'" maxlength="400" placeholder="'+esc(x[1])+'"></div>').join('')+'</div><div class="actions"><button class="btn" id="build-mcq">Build question</button><button class="btn secondary" id="copy-mcq">Copy question</button></div><div id="mcq-out" class="preview" aria-live="polite">Complete the fields and build your question.</div>');
+ bind('build-mcq',()=>{let a=['qobjective','qstem','correct','wrong1','wrong2','wrong3'].map(k=>document.getElementById(k).value.trim());document.getElementById('mcq-out').textContent='Objective: '+a[0]+'\n'+a[1]+'\nA. '+a[2]+'\nB. '+a[3]+'\nC. '+a[4]+'\nD. '+a[5]+'\n\nCorrect option in this draft: A. Shuffle options before classroom use and check that all distractors are plausible.'});
+ bind('copy-mcq',()=>clipboard(document.getElementById('mcq-out').textContent));
+}
+if(g.tool==='branching'){
+ box('Try a branching form','<p>Choose a fictional training interest to see which follow-up would appear. Both routes then lead to a common final question.</p><label for="branch">Which topic would you like?</label><select id="branch"><option value="">Choose a topic</option><option value="quiz">Creating quizzes</option><option value="automate">Understanding automations</option></select><div id="branch-out" class="preview" aria-live="polite">Select a topic to see the branch.</div>');
+ document.getElementById('branch').addEventListener('change',e=>{document.getElementById('branch-out').textContent=e.target.value==='quiz'?'Q2: What would you most like to learn: correct answers, points or feedback?\n\nThen → Q4: Would you attend a short demonstration?':e.target.value==='automate'?'Q3: Which task would you like to understand: a reminder or an approval workflow?\n\nThen → Q4: Would you attend a short demonstration?':'Select a topic to see the branch.'});
+}
+if(g.tool==='excel'){
+ box('Test a fictional average','<p>Enter four non-identifying values. This is a local example, not a connected spreadsheet.</p><div class="tool-grid">'+[1,2,3,4].map((x,i)=>'<div><label for="v'+x+'">Sample value '+x+'</label><input id="v'+x+'" type="number" step="any" value="'+[4,7,5,8][i]+'"></div>').join('')+'</div><div class="actions"><button class="btn" id="calculate">Calculate total and average</button></div><div id="excel-out" class="preview" role="status">Use the button to check your calculations.</div>');
+ bind('calculate',()=>{const values=[1,2,3,4].map(i=>Number(document.getElementById('v'+i).value));let box=document.getElementById('excel-out');if(values.some(x=>!Number.isFinite(x))){box.textContent='Enter four valid numbers.';return}const total=values.reduce((a,b)=>a+b,0);box.textContent='Total = '+total+'\nAverage = '+(total/4)+'\nExcel equivalent: =SUM(B2:B5) and =AVERAGE(B2:B5)'});
+}
+if(g.tool==='phishing'){
+ box('Spot a fictional scam','<p>Example message: “Your account closes in 10 minutes. Reply with your password and MFA code.”</p><label for="action">What is the safest first response?</label><select id="action"><option value="">Choose...</option><option value="reply">Reply and ask whether it is genuine</option><option value="click">Click the link, but do not enter anything</option><option value="verify">Open the known official app separately and report the message</option></select><button class="btn" id="check-action">Check response</button><div class="preview" id="action-out" role="status">Make a choice to see feedback.</div>');
+ bind('check-action',()=>{const value=document.getElementById('action').value;document.getElementById('action-out').textContent=value==='verify'?'Correct. Verify independently and report through the approved route.':value==='reply'||value==='click'?'Avoid interacting with the suspicious message. Use a known, independent route instead.':'Please select an answer.'});
+}
+if(g.tool==='flow'){
+ box('Plan a safe automated flow','<p>Arrange the steps of a simple fictional reminder workflow by choosing the correct stage for each action.</p><label for="flowtype">What begins a workflow?</label><select id="flowtype"><option value="">Choose...</option><option value="trigger">A trigger</option><option value="action">A final output</option></select><label for="flowdone">What follows the trigger?</label><select id="flowdone"><option value="">Choose...</option><option value="trigger">Another trigger always</option><option value="action">An action to carry out</option></select><button class="btn" id="flow-check">Check flow</button><div class="preview" id="flow-out" role="status">Complete both fields.</div>');
+ bind('flow-check',()=>{document.getElementById('flow-out').textContent=document.getElementById('flowtype').value==='trigger'&&document.getElementById('flowdone').value==='action'?'Correct: trigger → action → test and monitor. Use dummy inputs until the flow is authorised.':'A workflow begins with a trigger and then performs one or more actions. Recheck the choices.'});
+}
+})();
+</script>
+</body>
+</html>
