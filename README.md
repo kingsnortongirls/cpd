@@ -43,4 +43,6 @@ This is a public GitHub Pages site, **not an authenticated intranet**. Never ass
 
 The CLASS framework stands for **Context, Learning, Activity, Support, Success**. The guide covers a better brief for photosynthesis, improving an existing First World War activity, creating hinge questions and exit tickets for negative numbers, a copyable prompt bank, and checks for professional judgement, pupil privacy and accuracy.
 
-The site does not collect prompt-builder input or send it to a backend.\n\nThis hub provides **browser-based guides only**, with no downloadable PowerPoint, PDF or ZIP assets or download buttons.
+The site does not collect prompt-builder input or send it to a backend.
+
+This hub provides **browser-based guides only**, with no downloadable PowerPoint, PDF or ZIP assets or download buttons.
