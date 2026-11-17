@@ -9,7 +9,6 @@ const forbiddenExtensions = new Set(['.pdf','.ppt','.pptx','.doc','.docx','.xls'
 const inspectedExtensions = new Set(['.html','.js','.json','.css','.md','.txt']);
 const patterns = [
   ['Email address',/\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b/i],
-  ['External trust branding',/\bWMAT\b|West Midlands Academy Trust/i],
   ['Potential credential',/\b(?:password|passcode|api[_ -]?key|client[_ -]?secret|access[_ -]?token)\s*[:=]\s*["']?[A-Za-z0-9!@$%_.-]{7,}/i],
   ['Potential bearer token',/\bBearer\s+[A-Za-z0-9._-]{14,}/i],
   ['Internal sharing link',/https?:\/\/[^\s"'<>]*(?:sharepoint\.com\/|teams\.microsoft\.com\/l\/|staffshare|intranet|\/_layouts\/)/i],
