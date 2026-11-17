@@ -1,51 +1,92 @@
 <!doctype html>
 <html lang="en-GB">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#102d59">
-<meta name="description" content="KNGS CPD Hub: open-access guides, workshops and practical help for teaching, digital tools and professional development.">
-<title>KNGS CPD Hub | Staff Guides &amp; How-tos</title>
+<meta name="description" content="KNGS CPD Hub: public, practical teaching guides, digital skills, assessment, accessibility and professional learning.">
+<title>KNGS CPD Hub | Professional Learning and How-to Guides</title>
 <link rel="stylesheet" href="styles.css">
+<style>
+.filter-panel{display:grid;grid-template-columns:minmax(240px,1fr) repeat(2,minmax(145px,190px));gap:12px}
+.filter-panel label{display:block;font-size:.84rem;font-weight:800;margin-bottom:5px}
+.filter-panel input,.filter-panel select{width:100%;border:1px solid #aebfd0;border-radius:9px;padding:11px 12px;background:white;font:inherit;color:var(--ink)}
+.guide-count{font-size:.9rem;color:var(--muted);margin:16px 0}
+.resource-card .card-bottom{display:flex;gap:9px;align-items:center;justify-content:space-between;flex-wrap:wrap;margin-top:auto;padding-top:8px}
+.resource-card .card-bottom a{flex:1}.resource-card .meta-line{font-size:.8rem;color:#516a80}
+.resource-card .resource-icon{flex:none}.resource-card .pills{margin:4px 0}
+.section-intro{display:flex;justify-content:space-between;align-items:end;gap:15px;flex-wrap:wrap;margin-bottom:14px}
+.section-intro h2{margin-bottom:4px}.section-intro p{margin:0;color:var(--muted)}
+.card .new-guide{font-size:.73rem;color:#245d85;font-weight:750}
+.featured-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px}
+.featured{display:flex;flex-direction:column;gap:10px;border:1px solid #d8e6ef;border-radius:13px;background:#f8fbff;padding:17px}
+.featured h3{margin:0;font-size:1.05rem}.featured p{font-size:.86rem;color:var(--muted);flex:1;margin:0}.featured a{font-weight:800;font-size:.87rem}
+.small-note{font-size:.78rem;color:var(--muted)}
+@media(max-width:850px){.featured-grid{grid-template-columns:1fr 1fr}.filter-panel{grid-template-columns:1fr 1fr}.filter-panel>div:first-child{grid-column:1 / -1}}
+@media(max-width:600px){.featured-grid,.filter-panel{grid-template-columns:1fr}.filter-panel>div:first-child{grid-column:auto}}
+</style>
 </head>
 <body>
 <header class="top"><div class="wrap">
-  <nav class="topbar" aria-label="Main navigation"><span class="brand">Kings Norton Girls' School · Professional Learning</span><a class="toplink" href="https://kingsnortongirls.github.io/homepage/">Computer Science Learning Hub ↗</a></nav>
-  <div class="hero"><div class="eyebrow">Useful resources in one place</div><h1>CPD &amp; How-to<br>Guide Hub</h1><p>A growing collection of practical guides, workshop materials and everyday how-tos. Pick a topic, learn at your own pace and return whenever you need a refresher.</p><div class="hero-tags"><span>Teaching &amp; learning</span><span>Digital skills</span><span>AI &amp; technology</span><span>Public resources only</span></div></div>
+ <nav class="topbar" aria-label="Main navigation"><span class="brand">Kings Norton Girls' School · Professional Learning</span><a class="toplink" href="https://kingsnortongirls.github.io/homepage/">Main Learning Hub ↗</a></nav>
+ <div class="hero"><div class="eyebrow">Practical support whenever you need it</div><h1>CPD &amp; How-to<br>Guide Hub</h1><p>Short, self-service guides for teaching and learning, assessment, accessibility, digital skills and safe technology use. Read online, try an example and take useful ideas into your work.</p><div class="hero-tags"><span>Staff professional learning</span><span>Practical examples</span><span>No sign-in</span><span>Public-safe resources</span></div></div>
 </div></header>
 <main class="wrap">
- <section class="panel"><div class="section-heading" style="margin:0 0 12px"><h2>Welcome</h2><span class="pill">Open-access learning</span></div>
- <p>This hub is for useful, shareable professional learning. Guides can contain step-by-step instructions, online workshop walkthroughs, examples and quick-reference pages. <strong>Nothing confidential or pupil-identifiable should be published here.</strong></p>
- <div class="grid-three">
-  <div class="mini-card"><h3>📘 Follow a guide</h3><p>Practical explanations and examples you can use straight away.</p></div>
-  <div class="mini-card"><h3>📎 Quick references</h3><p>Read concise, accessible summaries directly in your browser.</p></div>
-  <div class="mini-card"><h3>🔎 Find it again</h3><p>Search by topic, title or keyword as the library grows.</p></div>
- </div></section>
- <section class="panel" aria-labelledby="resource-heading">
-  <div class="section-heading" style="margin:0 0 15px"><div><h2 id="resource-heading">Guide library</h2><p class="muted small" style="margin:3px 0 0">Start with the AI Lesson Design Lab. More guides can be added over time.</p></div><span class="pill" id="total">1 guide</span></div>
-  <div class="searchrow"><div><label for="search">Search the hub</label><input id="search" type="search" placeholder="e.g. AI, lesson planning, resources..." autocomplete="off"></div><div><label for="category">Category</label><select id="category"><option value="">All categories</option></select></div></div>
-  <p id="count" class="muted small" aria-live="polite"></p>
+ <section class="panel">
+  <div class="section-heading" style="margin:0 0 10px"><h2>Start with a real task</h2><span class="pill" id="total">Guides</span></div>
+  <p>Need to create an effective question, share a file, make a resource more accessible or understand an unfamiliar tool? Choose a guide and follow the steps. Each new guide contains a worked example and a practical task, with links to specific further-reading pages.</p>
+  <div class="grid-three">
+   <div class="mini-card"><h3>📘 Learn it</h3><p>Read a short explanation and follow the numbered steps.</p></div>
+   <div class="mini-card"><h3>🧪 Try it</h3><p>Explore a fictional scenario, then use the built-in activity.</p></div>
+   <div class="mini-card"><h3>🔎 Find it again</h3><p>Filter by topic, difficulty and keywords as the library grows.</p></div>
+  </div>
+  <div class="callout warning" style="margin-top:17px"><strong>Public website:</strong> The hub contains no confidential staff guidance or personal records. Do not enter pupil details, staff data, passwords, safeguarding information or private links into any activity. Follow your organisation's current approved procedures and systems.</div>
+ </section>
+ <section class="panel" aria-labelledby="featured-title">
+  <div class="section-intro"><div><div class="kicker">Good places to begin</div><h2 id="featured-title">Recommended starting guides</h2><p>Three useful guides for building safer, more effective everyday practice.</p></div></div>
+  <div class="featured-grid" id="featured"></div>
+ </section>
+ <section class="panel" aria-labelledby="library-title">
+  <div class="section-intro"><div><div class="kicker">Browse all topics</div><h2 id="library-title">Guide library</h2><p>Search by a task, topic or application.</p></div></div>
+  <div class="filter-panel">
+   <div><label for="search">Search guides</label><input id="search" type="search" placeholder="e.g. feedback, Forms, SEND, Excel..." autocomplete="off"></div>
+   <div><label for="category">Category</label><select id="category"><option value="">All categories</option></select></div>
+   <div><label for="level">Difficulty</label><select id="level"><option value="">All levels</option></select></div>
+  </div>
+  <p id="count" class="guide-count" aria-live="polite"></p>
   <div id="library" class="library"></div>
  </section>
- <section class="panel"><h2>How this hub will grow</h2><p>Each new topic will be a separate guide with a clear title, category and searchable tags. Useful additions could include software walkthroughs, lesson-design ideas, assessment tools and guides to everyday systems, provided they are appropriate for public sharing.</p><p style="margin-bottom:0"><strong>Before adding anything:</strong> remove pupil data, passwords, private staff information and internal-only links. Public GitHub Pages sites can be accessed by anyone with the address.</p></section>
+ <section class="panel"><h2>A library that grows with you</h2><p>New guides will have the same familiar format: outcome, numbered steps, a worked comparison, an activity and further reading. The library can grow without requiring accounts, completion tracking or complicated administration.</p><p class="muted small" style="margin-bottom:0"><strong>Publishing rule:</strong> Only non-confidential, publicly shareable examples belong here. Do not publish internal procedure documents, real student work, staff data, credentials, unpublished policies or private screenshots.</p></section>
 </main>
-<footer class="footer"><div class="wrap">KNGS CPD Hub · Independent professional learning · Public resources only</div></footer>
+<footer class="footer"><div class="wrap">KNGS CPD Hub · Public professional learning · No downloadable assets or account required</div></footer>
 <script src="guides.js"></script>
+<script src="guides-data-teaching.js"></script>
+<script src="guides-data-digital.js"></script>
 <script>
 (function(){
- "use strict";
- const search=document.getElementById('search'),category=document.getElementById('category'),out=document.getElementById('library'),count=document.getElementById('count');
- const safe=s=>String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;','\'':'&#39;'}[c]));
- const cats=[...new Set(CPD_GUIDES.map(g=>g.category))].sort();
- cats.forEach(c=>{const o=document.createElement('option');o.value=c;o.textContent=c;category.appendChild(o)});
- document.getElementById('total').textContent=CPD_GUIDES.length+' '+(CPD_GUIDES.length===1?'guide':'guides');
- function render(){
-  const query=search.value.trim().toLowerCase(),cat=category.value;
-  const list=CPD_GUIDES.filter(g=>(!cat||g.category===cat)&&(!query||[g.title,g.subtitle,g.description,g.category,...g.tags].join(' ').toLowerCase().includes(query)));
-  count.textContent=list.length+' '+(list.length===1?'guide':'guides')+' shown';
-  out.innerHTML=list.map(g=>'<article class="card resource-card"><div class="resource-top"><span class="resource-icon" aria-hidden="true">💡</span><span class="category">'+safe(g.category)+'</span></div><h3>'+safe(g.title)+'</h3><div class="bold small">'+safe(g.subtitle)+'</div><p>'+safe(g.description)+'</p><div class="pills">'+g.tags.slice(0,4).map(t=>'<span class="pill">'+safe(t)+'</span>').join('')+'</div><p class="micro muted">'+safe(g.updated)+' · '+safe(g.duration)+'</p><div class="actions"><a class="btn" href="'+safe(g.guide)+'">Open guide →</a><a class="btn secondary" href="'+safe(g.handout)+'">View quick reference</a></div></article>').join('')||'<div class="empty">No guides match your search. Try a different keyword.</div>';
- }
- search.addEventListener('input',render);category.addEventListener('change',render);render();
+'use strict';
+const old=CPD_GUIDES.map(g=>({...g,icon:'💡',level:'Beginner',minutes:60}));
+const newer=CPD_MORE_GUIDES.map(g=>({...g,guide:'guide.html?id='+encodeURIComponent(g.id)}));
+const guides=[...old,...newer].sort((a,b)=>a.title.localeCompare(b.title,'en-GB'));
+const safe=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const search=document.getElementById('search'),category=document.getElementById('category'),level=document.getElementById('level'),out=document.getElementById('library'),count=document.getElementById('count');
+document.getElementById('total').textContent=guides.length+' guides';
+[...new Set(guides.map(g=>g.category))].sort().forEach(x=>{let o=document.createElement('option');o.value=x;o.textContent=x;category.appendChild(o)});
+[...new Set(guides.map(g=>g.level))].sort().forEach(x=>{let o=document.createElement('option');o.value=x;o.textContent=x;level.appendChild(o)});
+const featuredIds=['ai-safety','hinge-questions','forms'];
+document.getElementById('featured').innerHTML=featuredIds.map(id=>{
+ const g=guides.find(x=>x.id===id);if(!g)return '';
+ return '<article class="featured"><div class="resource-top"><span class="resource-icon" aria-hidden="true">'+safe(g.icon)+'</span><span class="category">'+safe(g.category)+'</span></div><h3>'+safe(g.title)+'</h3><p>'+safe(g.description)+'</p><a href="'+safe(g.guide)+'">Start this guide →</a></article>';
+}).join('');
+function render(){
+ const q=search.value.trim().toLowerCase(),cat=category.value,difficulty=level.value;
+ const found=guides.filter(g=>(!cat||g.category===cat)&&(!difficulty||g.level===difficulty)&&(!q||[g.title,g.subtitle,g.description,g.category,...g.tags].join(' ').toLowerCase().includes(q)));
+ count.textContent=found.length+' of '+guides.length+' guides';
+ out.innerHTML=found.length?found.map(g=>{
+ const isOld=g.id==='ai-lesson-design-lab';
+ return '<article class="card resource-card"><div class="resource-top"><span class="resource-icon" aria-hidden="true">'+safe(g.icon)+'</span><span class="category">'+safe(g.category)+'</span></div><h3>'+safe(g.title)+'</h3><div class="bold small">'+safe(g.subtitle)+'</div><p>'+safe(g.description)+'</p><div class="pills">'+g.tags.slice(0,3).map(t=>'<span class="pill">'+safe(t)+'</span>').join('')+'</div><div class="meta-line">'+safe(g.level)+' · '+(isOld?'60-minute workshop':safe(g.minutes)+'-minute guide and activity')+' · Reviewed '+safe(g.updated)+'</div><div class="card-bottom"><a class="btn" href="'+safe(g.guide)+'">Open guide →</a>'+(isOld&&g.handout?'<a class="btn secondary" href="'+safe(g.handout)+'">Quick reference</a>':'')+'</div></article>';
+ }).join(''):'<div class="empty">No guides found. Try another keyword or clear the filters.</div>';
+}
+search.addEventListener('input',render);category.addEventListener('change',render);level.addEventListener('change',render);render();
 })();
 </script>
 </body></html>
