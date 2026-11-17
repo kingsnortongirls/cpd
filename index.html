@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#102d59">
+<meta name="description" content="KNGS CPD Hub: open-access guides, workshops and practical help for teaching, digital tools and professional development.">
+<title>KNGS CPD Hub | Staff Guides &amp; How-tos</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <nav class="topbar" aria-label="Main navigation"><span class="brand">Kings Norton Girls' School · Professional Learning</span><a class="toplink" href="https://kingsnortongirls.github.io/homepage/">Computer Science Learning Hub ↗</a></nav>
+  <div class="hero"><div class="eyebrow">Useful resources in one place</div><h1>CPD &amp; How-to<br>Guide Hub</h1><p>A growing collection of practical guides, workshop materials and everyday how-tos. Pick a topic, learn at your own pace and return whenever you need a refresher.</p><div class="hero-tags"><span>Teaching &amp; learning</span><span>Digital skills</span><span>AI &amp; technology</span><span>Public resources only</span></div></div>
+</div></header>
+<main class="wrap">
+ <section class="panel"><div class="section-heading" style="margin:0 0 12px"><h2>Welcome</h2><span class="pill">Open-access learning</span></div>
+ <p>This hub is for useful, shareable professional learning. Guides can contain step-by-step instructions, workshop slides, handouts, examples and quick-reference materials. <strong>Nothing confidential or pupil-identifiable should be published here.</strong></p>
+ <div class="grid-three">
+  <div class="mini-card"><h3>📘 Follow a guide</h3><p>Practical explanations and examples you can use straight away.</p></div>
+  <div class="mini-card"><h3>📎 Keep a reference</h3><p>Printable handouts and summaries for future use.</p></div>
+  <div class="mini-card"><h3>🔎 Find it again</h3><p>Search by topic, title or keyword as the library grows.</p></div>
+ </div></section>
+ <section class="panel" aria-labelledby="resource-heading">
+  <div class="section-heading" style="margin:0 0 15px"><div><h2 id="resource-heading">Guide library</h2><p class="muted small" style="margin:3px 0 0">Start with the AI Lesson Design Lab. More guides can be added over time.</p></div><span class="pill" id="total">1 guide</span></div>
+  <div class="searchrow"><div><label for="search">Search the hub</label><input id="search" type="search" placeholder="e.g. AI, lesson planning, resources..." autocomplete="off"></div><div><label for="category">Category</label><select id="category"><option value="">All categories</option></select></div></div>
+  <p id="count" class="muted small" aria-live="polite"></p>
+  <div id="library" class="library"></div>
+ </section>
+ <section class="panel"><h2>How this hub will grow</h2><p>Each new topic will be a separate guide with a clear title, category and searchable tags. Useful additions could include software walkthroughs, lesson-design ideas, assessment tools and guides to everyday systems, provided they are appropriate for public sharing.</p><p style="margin-bottom:0"><strong>Before adding anything:</strong> remove pupil data, passwords, private staff information and internal-only links. Public GitHub Pages sites can be accessed by anyone with the address.</p></section>
+</main>
+<footer class="footer"><div class="wrap">KNGS CPD Hub · Independent professional learning · Public resources only</div></footer>
+<script src="guides.js"></script>
+<script>
+(function(){
+ "use strict";
+ const search=document.getElementById('search'),category=document.getElementById('category'),out=document.getElementById('library'),count=document.getElementById('count');
+ const safe=s=>String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;','\'':'&#39;'}[c]));
+ const cats=[...new Set(CPD_GUIDES.map(g=>g.category))].sort();
+ cats.forEach(c=>{const o=document.createElement('option');o.value=c;o.textContent=c;category.appendChild(o)});
+ document.getElementById('total').textContent=CPD_GUIDES.length+' '+(CPD_GUIDES.length===1?'guide':'guides');
+ function render(){
+  const query=search.value.trim().toLowerCase(),cat=category.value;
+  const list=CPD_GUIDES.filter(g=>(!cat||g.category===cat)&&(!query||[g.title,g.subtitle,g.description,g.category,...g.tags].join(' ').toLowerCase().includes(query)));
+  count.textContent=list.length+' '+(list.length===1?'guide':'guides')+' shown';
+  out.innerHTML=list.map(g=>'<article class="card resource-card"><div class="resource-top"><span class="resource-icon" aria-hidden="true">💡</span><span class="category">'+safe(g.category)+'</span></div><h3>'+safe(g.title)+'</h3><div class="bold small">'+safe(g.subtitle)+'</div><p>'+safe(g.description)+'</p><div class="pills">'+g.tags.slice(0,4).map(t=>'<span class="pill">'+safe(t)+'</span>').join('')+'</div><p class="micro muted">'+safe(g.updated)+' · '+safe(g.duration)+'</p><div class="actions"><a class="btn" href="'+safe(g.guide)+'">Open guide →</a><a class="btn secondary" href="'+safe(g.handout)+'">Quick reference</a></div></article>').join('')||'<div class="empty">No guides match your search. Try a different keyword.</div>';
+ }
+ search.addEventListener('input',render);category.addEventListener('change',render);render();
+})();
+</script>
+</body></html>
