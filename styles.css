@@ -1,5 +1,6 @@
 :root{--navy:#102d59;--blue:#185aa3;--ink:#172b45;--muted:#536a83;--pale:#f3f6fc;--line:#d7e2ef;--white:#fff;--teal:#16735d;--shadow:0 12px 34px #123b6512}
 *{box-sizing:border-box}
+[hidden]{display:none!important}
 html{scroll-behavior:smooth}
 body{margin:0;background:var(--pale);color:var(--ink);font:16px/1.6 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif}
 h1,h2,h3,h4,p{margin-top:0}
@@ -24,7 +25,7 @@ main{position:relative;margin-top:-40px;padding-bottom:40px}
 .muted{color:var(--muted)}.small{font-size:.87rem}.micro{font-size:.75rem}.bold{font-weight:800}
 .pills{display:flex;flex-wrap:wrap;gap:8px}
 .pill{background:#eaf2fb;color:#205b8f;border-radius:99px;font-size:.76rem;font-weight:800;padding:5px 10px}
-.btn{background:var(--blue);border:1px solid var(--blue);color:#fff;border-radius:10px;padding:10px 15px;display:inline-flex;gap:8px;align-items:center;justify-content:center;font:800 .9rem/1.4 inherit;text-decoration:none;cursor:pointer}
+.btn{background:var(--blue);border:1px solid var(--blue);color:#fff;border-radius:10px;padding:10px 15px;display:inline-flex;gap:8px;align-items:center;justify-content:center;font-weight:800;font-size:.9rem;line-height:1.4;font-family:inherit;text-decoration:none;cursor:pointer}
 .btn:hover{background:#103e76;color:white}
 .btn.secondary{background:#fff;color:var(--blue);border-color:#a9c6df}
 .btn.secondary:hover{background:#ecf4fb;color:var(--blue)}
