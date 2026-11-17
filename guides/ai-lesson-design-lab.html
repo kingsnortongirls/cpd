@@ -18,6 +18,7 @@
 <div class="guide-header"><div><div class="kicker">Guide 01 · November 2026</div><h1>Make AI useful for teaching</h1><p class="muted">Based on the AI Lesson Design Lab workshop and accompanying reference sheet.</p></div><span class="resource-icon" aria-hidden="true">💡</span></div>
 <div class="callout"><strong>The central idea:</strong> AI should reduce production time, not replace teacher thinking. The better the teaching context you provide, the more likely the result is to be usable.</div>
 <div class="actions no-print"><a class="btn" href="ai-lesson-design-lab-handout.html">View / print the A4 handout ↗</a><a class="btn secondary" href="ai-lesson-design-lab-slides.html">View workshop walkthrough ↗</a></div>
+<div class="actions no-print" id="native-downloads" style="margin-top:9px" hidden aria-label="Download original file formats"></div>
 <nav class="site-map no-print" aria-label="Guide sections"><a href="#framework">The CLASS framework</a><a href="#demo">Three practical demos</a><a href="#builder">Prompt builder</a><a href="#prompts">Prompt bank</a><a href="#guardrails">Professional safeguards</a></nav>
 </section>
 <section class="panel" id="framework">
@@ -94,6 +95,11 @@
 <script>
 (function(){
 'use strict';
+const binaryFiles=[['PowerPoint presentation','../assets/AI_Lesson_Design_Lab_Public.pptx'],['Original PDF handout','../assets/Design_Lab_Cheat_Sheet.pdf']];
+const downloads=document.getElementById('native-downloads');
+binaryFiles.forEach(([label,url])=>{
+ fetch(url,{method:'HEAD'}).then(r=>{if(r.ok){const a=document.createElement('a');a.className='btn secondary';a.href=url;a.download='';a.textContent='Download '+label;downloads.appendChild(a);downloads.hidden=false;}}).catch(()=>{});
+});
 const ids=['context','learning','activity','support','success','additional'];
 const labels=['Context','Learning','Activity','Support','Success','Additional constraints'];
 function build(){
