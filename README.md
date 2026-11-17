@@ -1,48 +1,63 @@
-# KNGS CPD & How-to Guide Hub
+# KNGS CPD & How-to Hub
 
-A public, searchable library of professional development, instructional guides and non-confidential teaching resources.
+Public-facing, browser-based teaching and digital skills guides. The repository is **public**, so no confidential information, internal operational detail, real pupil data or downloadable resource files should be committed here.
 
-**Live site (when Pages is enabled):** https://kingsnortongirls.github.io/cpd/
+**Website (when GitHub Pages is enabled):** https://kingsnortongirls.github.io/cpd/
 
-## Current guide
+## What's in the hub
 
-**AI Lesson Design Lab: Planning Smarter, Not Harder**
+13 guides across six subject areas:
 
-- Full guide: `guides/ai-lesson-design-lab.html`
-- Interactive CLASS prompt builder (runs locally in the user's browser)
-- Online quick-reference page: `guides/ai-lesson-design-lab-handout.html`
-- Browser-based presentation walkthrough: `guides/ai-lesson-design-lab-slides.html`
+| Category | Guides |
+| --- | --- |
+| AI in education | Using AI Safely in Education |
+| AI and digital practice | AI Lesson Design Lab |
+| Teaching and learning | Adaptive Teaching and Scaffolding; Retrieval Practice and Metacognition |
+| Assessment and feedback | Creating Effective Assessment Questions; Feedback That Moves Learning Forward |
+| Accessibility and inclusion | Making Teaching Resources Accessible |
+| Microsoft 365 | Microsoft Teams for Teaching; Microsoft Forms: Beyond Basic Surveys; Power Automate for Beginners; SharePoint and OneDrive Explained; Excel for Teachers |
+| Digital safety | Cyber Security Essentials |
 
-This content is based on the AI Lesson Design Lab presentation and one-page handout provided for the CPD Hub. The web walkthrough is a **condensed adaptation**, not an exact 56-slide copy.
+Each new guide contains an overview, five steps, before-and-after example, practical activity, independent checklist, direct links to official guidance and relevant related guides.
 
-**Important:** Do not publish presentation files or other downloadable assets. Keep any sign-in details, passwords and credentials out of this public repository and all its pages.
+Interactive activities include: AI privacy decision practice, a diagnostic multiple-choice question builder, fictional Forms branching, a simple Power Automate workflow model, a cyber security scenario and an Excel calculator. These run entirely in the browser and **do not transmit or store typed responses**.
 
-## Adding a new guide
+The existing AI Lesson Design Lab remains available with its CLASS prompt builder, online reference and browser walkthrough.
 
-1. Check that the proposed resource can be shared publicly. Remove passwords, pupil-identifiable content, staff-only details, internal links and any other confidential information, including hidden speaker notes and file metadata.
-2. Create a page inside `guides/` with the shared `../styles.css` stylesheet.
-3. Add its details (id, title, subtitle, category, description, updated, duration, tags and URLs) to `guides.js`. The homepage search and category filter update automatically.
-4. Where useful, include an online quick-reference page and a presentation companion.
-5. Test from a phone as well as a school desktop. Check all external links.
+## Add future guides
 
-## Site structure
+1. Check that the subject and all text, example names and links can be shared publicly. Use invented examples only, especially in screenshots.
+2. Add a complete new guide object to `guides-data-teaching.js` or `guides-data-digital.js` following the existing schema.
+3. Give each guide a unique ID, title, category, level, reading/activity time, date reviewed, objective, five instructional steps, example, practice, checklist, and direct source pages.
+4. If a new kind of interactive tool is needed, add a safe client-side handler to `guide.html`. No analytics or remote data submission.
+5. Test the guide via `guide.html?id=your-guide-id`, then search and filter on the homepage.
+6. Check mobile layout, accuracy and external source links; repeat the manual privacy review.
 
-- `index.html`: homepage with a search and category filter.
-- `guides.js`: expandable guide directory.
-- `styles.css`: KNGS visual theme, accessible layouts, print styles.
-- `guides/`: individual resources.
-- `.github/workflows/pages.yml`: GitHub Pages publishing on push to `main`.
+For bespoke workshop resources, create a standalone page under `guides/` and register it in `guides.js`.
+
+## Repository layout
+
+- `index.html`: searchable guide library with category and difficulty filters.
+- `guide.html`: shared guide reader and safe interactive activities.
+- `guides.js`: earlier bespoke standalone guides.
+- `guides-data-teaching.js`: teaching, assessment, inclusion and AI safety guides.
+- `guides-data-digital.js`: Microsoft 365, Excel and cyber security guides.
+- `styles.css`: shared visual theme and accessibility styles.
+- `scripts/check-public-content.mjs`: basic sensitive-content and file-type check.
+- `.github/workflows/pages.yml`: runs the content check before publishing through GitHub Pages.
+
+## Public publication rules
+
+- Do **not** upload PowerPoint, PDF, Word, spreadsheet, ZIP or other downloadable asset files.
+- Do **not** commit names, contact details, email addresses, passwords, login screenshots, confidential policies, real pupil data, safeguarding material, internal links or private document URLs.
+- Do not add user input collection, tracking, sign-in, cloud storage, or integration with school data systems.
+- Use only fictional scenarios and public, official product instructions.
+- Keep the institution's own policies and training approval arrangements out of the public pages. Tell staff to check their current local procedures instead.
+
+The automatic content check rejects common email addresses, credential patterns, external-branding references, private links and common downloadable file formats, but it **cannot guarantee that information is anonymous or safe to publish**. Human review remains essential.
 
 ## Publishing
 
-The included GitHub Actions workflow attempts to enable Pages and deploy automatically. If the site is not accessible, check **Settings → Pages** and **Actions**.
+Changes to `main` trigger GitHub Actions. The content audit must pass before the Pages publishing job runs. Pull requests run the audit without deploying. If publishing fails, inspect the Actions tab and Settings → Pages.
 
-This is a public GitHub Pages site, **not an authenticated intranet**. Never assume unpublished drafts or staff-only data are secure in a public repository.
-
-## About the first guide
-
-The CLASS framework stands for **Context, Learning, Activity, Support, Success**. The guide covers a better brief for photosynthesis, improving an existing First World War activity, creating hinge questions and exit tickets for negative numbers, a copyable prompt bank, and checks for professional judgement, pupil privacy and accuracy.
-
-The site does not collect prompt-builder input or send it to a backend.
-
-This hub provides **browser-based guides only**, with no downloadable PowerPoint, PDF or ZIP assets or download buttons.
+This project provides general educational help, not an authenticated staff intranet.
