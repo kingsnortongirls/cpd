@@ -15,10 +15,10 @@
 </div></header>
 <main class="wrap">
  <section class="panel"><div class="section-heading" style="margin:0 0 12px"><h2>Welcome</h2><span class="pill">Open-access learning</span></div>
- <p>This hub is for useful, shareable professional learning. Guides can contain step-by-step instructions, workshop slides, handouts, examples and quick-reference materials. <strong>Nothing confidential or pupil-identifiable should be published here.</strong></p>
+ <p>This hub is for useful, shareable professional learning. Guides can contain step-by-step instructions, online workshop walkthroughs, examples and quick-reference pages. <strong>Nothing confidential or pupil-identifiable should be published here.</strong></p>
  <div class="grid-three">
   <div class="mini-card"><h3>📘 Follow a guide</h3><p>Practical explanations and examples you can use straight away.</p></div>
-  <div class="mini-card"><h3>📎 Keep a reference</h3><p>Printable handouts and summaries for future use.</p></div>
+  <div class="mini-card"><h3>📎 Quick references</h3><p>Read concise, accessible summaries directly in your browser.</p></div>
   <div class="mini-card"><h3>🔎 Find it again</h3><p>Search by topic, title or keyword as the library grows.</p></div>
  </div></section>
  <section class="panel" aria-labelledby="resource-heading">
@@ -43,7 +43,7 @@
   const query=search.value.trim().toLowerCase(),cat=category.value;
   const list=CPD_GUIDES.filter(g=>(!cat||g.category===cat)&&(!query||[g.title,g.subtitle,g.description,g.category,...g.tags].join(' ').toLowerCase().includes(query)));
   count.textContent=list.length+' '+(list.length===1?'guide':'guides')+' shown';
-  out.innerHTML=list.map(g=>'<article class="card resource-card"><div class="resource-top"><span class="resource-icon" aria-hidden="true">💡</span><span class="category">'+safe(g.category)+'</span></div><h3>'+safe(g.title)+'</h3><div class="bold small">'+safe(g.subtitle)+'</div><p>'+safe(g.description)+'</p><div class="pills">'+g.tags.slice(0,4).map(t=>'<span class="pill">'+safe(t)+'</span>').join('')+'</div><p class="micro muted">'+safe(g.updated)+' · '+safe(g.duration)+'</p><div class="actions"><a class="btn" href="'+safe(g.guide)+'">Open guide →</a><a class="btn secondary" href="'+safe(g.handout)+'">Quick reference</a></div></article>').join('')||'<div class="empty">No guides match your search. Try a different keyword.</div>';
+  out.innerHTML=list.map(g=>'<article class="card resource-card"><div class="resource-top"><span class="resource-icon" aria-hidden="true">💡</span><span class="category">'+safe(g.category)+'</span></div><h3>'+safe(g.title)+'</h3><div class="bold small">'+safe(g.subtitle)+'</div><p>'+safe(g.description)+'</p><div class="pills">'+g.tags.slice(0,4).map(t=>'<span class="pill">'+safe(t)+'</span>').join('')+'</div><p class="micro muted">'+safe(g.updated)+' · '+safe(g.duration)+'</p><div class="actions"><a class="btn" href="'+safe(g.guide)+'">Open guide →</a><a class="btn secondary" href="'+safe(g.handout)+'">View quick reference</a></div></article>').join('')||'<div class="empty">No guides match your search. Try a different keyword.</div>';
  }
  search.addEventListener('input',render);category.addEventListener('change',render);render();
 })();
