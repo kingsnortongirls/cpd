@@ -10,19 +10,19 @@ A public, searchable library of professional development, instructional guides a
 
 - Full guide: `guides/ai-lesson-design-lab.html`
 - Interactive CLASS prompt builder (runs locally in the user's browser)
-- Print-ready A4 cheat sheet: `guides/ai-lesson-design-lab-handout.html`
+- Online quick-reference page: `guides/ai-lesson-design-lab-handout.html`
 - Browser-based presentation walkthrough: `guides/ai-lesson-design-lab-slides.html`
 
-This content is based on the supplied WMAT workshop presentation and one-page handout. The web walkthrough is a **condensed adaptation**, not an exact 56-slide copy.
+This content is based on the AI Lesson Design Lab presentation and one-page handout provided for the CPD Hub. The web walkthrough is a **condensed adaptation**, not an exact 56-slide copy.
 
-**Important:** The original uploaded presentation contained a guest sign-in slide. That slide is **not** published. Never add the unsanitised original PPTX or a derived file retaining that credential to this public repository. The account password should be changed if it is still active.
+**Important:** Do not publish presentation files or other downloadable assets. Keep any sign-in details, passwords and credentials out of this public repository and all its pages.
 
 ## Adding a new guide
 
 1. Check that the proposed resource can be shared publicly. Remove passwords, pupil-identifiable content, staff-only details, internal links and any other confidential information, including hidden speaker notes and file metadata.
 2. Create a page inside `guides/` with the shared `../styles.css` stylesheet.
 3. Add its details (id, title, subtitle, category, description, updated, duration, tags and URLs) to `guides.js`. The homepage search and category filter update automatically.
-4. Where useful, include a print-ready reference page and a presentation companion.
+4. Where useful, include an online quick-reference page and a presentation companion.
 5. Test from a phone as well as a school desktop. Check all external links.
 
 ## Site structure
@@ -43,4 +43,4 @@ This is a public GitHub Pages site, **not an authenticated intranet**. Never ass
 
 The CLASS framework stands for **Context, Learning, Activity, Support, Success**. The guide covers a better brief for photosynthesis, improving an existing First World War activity, creating hinge questions and exit tickets for negative numbers, a copyable prompt bank, and checks for professional judgement, pupil privacy and accuracy.
 
-The site does not collect prompt-builder input or send it to a backend.
+The site does not collect prompt-builder input or send it to a backend.\n\nThis hub provides **browser-based guides only**, with no downloadable PowerPoint, PDF or ZIP assets or download buttons.
